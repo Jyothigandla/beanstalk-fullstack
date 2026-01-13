@@ -1,0 +1,29 @@
+{
+  "AWSEBDockerrunVersion": 3,
+  "containerDefinitions": [],
+  "dockerComposeConfiguration": {
+    "version": "3",
+    "services": {
+      "backend": {
+        "build": "./backend",
+        "ports": ["3000:3000"]
+      },
+      "frontend": {
+        "build": "./frontend",
+        "ports": ["80:80"],
+        "depends_on": ["backend"]
+      },
+      "nginx": {
+        "image": "nginx:alpine",
+        "ports": ["80:80"],
+        "links": ["backend"],
+        "volumes": [
+          {
+            "source": "./nginx",
+            "destination": "/etc/nginx/conf.d"
+          }
+        ]
+      }
+    }
+  }
+}

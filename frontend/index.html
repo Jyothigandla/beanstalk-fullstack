@@ -10,7 +10,7 @@
 
   <script>
     function callBackend() {
-      fetch("http://fullstack-prod.eba-drcv4xih.us-east-1.elasticbeanstalk.com/api")
+      fetch("/api")
         .then(res => res.json())
         .then(data => {
           document.getElementById("output").innerText = data.message;
@@ -22,4 +22,5 @@
   </script>
 </body>
 </html>
+
 

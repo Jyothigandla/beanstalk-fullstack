@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Beanstalk Full Stack</title>
+</head>
+<body>
+  <h1>Frontend Running on Elastic Beanstalk</h1>
+  <button onclick="callBackend()">Call Backend</button>
+  <p id="output">Waiting...</p>
+
+  <script>
+    function callBackend() {
+      fetch("http://fullstack-prod.eba-drcv4xih.us-east-1.elasticbeanstalk.com/api")
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("output").innerText = data.message;
+        })
+        .catch(err => {
+          document.getElementById("output").innerText = "Backend error";
+        });
+    }
+  </script>
+</body>
+</html>
+
